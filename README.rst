@@ -3,6 +3,7 @@ pretix Service Fees
 
 This is a plugin for `pretix`_. 
 
+
 Development setup
 -----------------
 
@@ -26,6 +27,12 @@ License
 Copyright 2018 Raphael Michel
 
 Released under the terms of the Apache License 2.0
+
+
+Customization
+-------------
+
+This is a customized version. It requires a patch on the `pretix` base system.
 
 
 .. _pretix: https://github.com/pretix/pretix
