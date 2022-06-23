@@ -11,7 +11,7 @@ from pretix.base.settings import settings_hierarkey
 from pretix.base.signals import order_fee_calculation
 from pretix.base.templatetags.money import money_filter
 from pretix.control.signals import nav_event_settings
-from pretix.presale.signals import fee_calculation_for_cart, front_page_top, order_meta_from_request
+from pretix.presale.signals import fee_calculation_for_cart, product_list_bottom, order_meta_from_request
 from pretix.presale.views import get_cart
 from pretix.presale.views.cart import cart_session
 
@@ -129,7 +129,7 @@ def order_fee(sender: Event, positions, invoice_address, total, meta_info, gift_
     return get_fees(sender, total, invoice_address, mod, positions=positions, gift_cards=gift_cards)
 
 
-@receiver(front_page_top, dispatch_uid="service_fee_front_page_top")
+@receiver(product_list_bottom, dispatch_uid="service_fee_front_page_top")
 def front_page_top_recv(sender: Event, **kwargs):
     fees = []
     fee_per_ticket = sender.settings.get('service_fee_per_ticket', as_type=Decimal)
@@ -142,10 +142,10 @@ def front_page_top_recv(sender: Event, **kwargs):
 
     fee_percent = sender.settings.get('service_fee_percent', as_type=Decimal)
     if fee_percent:
-        fees = fees + ['{} % {}'.format(fee_percent, gettext('per order'))]
+        fees = fees + ['{}%'.format(fee_percent)]
 
     if fee_per_ticket or fee_abs or fee_percent:
-        return '<p>%s</p>' % gettext('A service fee of {} will be added on top of each order.').format(
+        return '<br><div>%s</div>' % gettext('A surcharge of {} will be added to each order.').format(
             ' {} '.format(gettext('plus')).join(fees)
         )
 
