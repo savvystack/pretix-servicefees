@@ -25,10 +25,10 @@ cmdclass = {
 
 setup(
     name='pretix-servicefees',
-    version='1.8.0',
-    description='Allows you to impose a service fee on all non-free orders.',
+    version='1.8.0-cantix',
+    description='Allows you to impose a service fee on all non-free orders, including Can-Tix customization',
     long_description=long_description,
-    url='https://github.com/pretix/pretix-servicefees',
+    url='https://github.com/savvystack/pretix-servicefees',
     author='Raphael Michel',
     author_email='michel@rami.io',
     license='Apache Software License',

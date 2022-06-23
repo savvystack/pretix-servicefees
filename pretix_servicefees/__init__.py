@@ -10,9 +10,9 @@ class PluginApp(AppConfig):
         name = gettext_lazy('Service Fees')
         author = 'Raphael Michel'
         category = 'FEATURE'
-        description = gettext_lazy('This plugin allows to charge a service fee on all non-free orders.')
-        visible = True
-        version = '1.8.0'
+        description = gettext_lazy('This plugin allows to charge a service fee on all non-free orders, including Can-Tix customization.')
+        visible = False
+        version = '1.8.0-cantix'
 
     def ready(self):
         from . import signals  # NOQA
